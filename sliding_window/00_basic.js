@@ -1,12 +1,15 @@
 function findAveragesOfSubarrays(K, array) {
-  let result = [];
+  const result = [];
   for (let i = 0; i < array.length - K + 1; i++) {
     let sum = 0.0;
+
     for (let j = i; j < i + K; j++) {
       sum += array[j];
     }
+
     result.push(sum / K);
   }
+
   return result;
 }
 
