@@ -24,7 +24,9 @@ function quickselectHelper(array, startIdx, endIdx, position) {
         rightIdx--;
       }
     }
+
     swap(pivotIdx, rightIdx, array);
+
     if (rightIdx === position) {
       return array[rightIdx];
     } else if (rightIdx < position) {
