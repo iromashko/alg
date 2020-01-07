@@ -13,19 +13,19 @@ function findAveragesOfSubarrays(K, array) {
   return result;
 }
 
-function findAveragesOfSubarrays_(K, array) {
-  const result = [];
-  for (let i = 0; i < array.length - K + 1; i++) {
-    let sum = 0.0;
+// function findAveragesOfSubarrays_(K, array) {
+//   const result = [];
+//   for (let i = 0; i < array.length - K + 1; i++) {
+//     let sum = 0.0;
 
-    for (let j = i; j < i + K; j++) {
-      sum += array[j];
-    }
+//     for (let j = i; j < i + K; j++) {
+//       sum += array[j];
+//     }
 
-    result.push(sum / K);
-  }
-  return result;
-}
+//     result.push(sum / K);
+//   }
+//   return result;
+// }
 
 // O(N * K)
 const result = findAveragesOfSubarrays(5, [1, 3, 2, 6, -1, 4, 1, 8, 2]);
