@@ -1,8 +1,5 @@
-export function mergeArrays(
-  arr1: Array<number>,
-  arr2: Array<number>
-): Array<number> {
-  let merged = [];
+function mergeArrays(arr1, arr2) {
+  const merged = [];
   let i = 0;
   let j = 0;
   while (i < arr1.length && j < arr2.length) {
@@ -16,12 +13,10 @@ export function mergeArrays(
   }
   if (i <= arr1.length - 1) {
     arr1.splice(0, i);
-    merged.concat(arr1);
+    merged = merged.concat(arr1);
   } else if (j <= arr2.length - 1) {
     arr2.splice(0, j);
-    merged.concat(arr2);
+    merged = merged.concat(arr2);
   }
-
   return merged;
 }
-console.log(mergeArrays([4, 5, 6], [-2, -1, 0, 7]));
