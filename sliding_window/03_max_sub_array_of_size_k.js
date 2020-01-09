@@ -1,18 +1,3 @@
-function maxSubArrayOfSizeK(k, array) {
-  let maxSum = 0;
-  let windowSum = 0;
-  for (let i = 0; i < array.length - k + 1; i++) {
-    windowSum = 0;
-
-    for (let j = i; j < i + k; j++) {
-      windowSum += array[j];
-    }
-    maxSum = Math.max(maxSum, windowSum);
-  }
-
-  return maxSum;
-}
-
 // function max_sub_array_of_size_k(k, arr) {
 //   let maxSum = 0,
 //     windowSum = 0;
