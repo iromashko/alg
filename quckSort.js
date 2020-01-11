@@ -8,7 +8,7 @@ function quickSortHelper(array, startIdx, endIdx) {
   const pivotIdx = startIdx;
   let leftIdx = startIdx + 1;
   let rightIdx = endIdx;
-  while (rightIdx >= leftIdx) {
+  while (leftIdx <= rightIdx) {
     if (array[leftIdx] > array[pivotIdx] && array[rightIdx] < array[pivotIdx]) {
       swap(leftIdx, rightIdx, array);
     }
