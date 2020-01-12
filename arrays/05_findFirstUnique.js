@@ -1,5 +1,5 @@
 function findFirstUnique(array) {
-  let counts = {};
+  const counts = {};
   for (let i = 0; i < array.length; i++) {
     if (array[i] in counts) {
       counts[array[i]]++;
@@ -7,9 +7,8 @@ function findFirstUnique(array) {
       counts[array[i]] = 1;
     }
   }
-
   for (let i = 0; i < array.length; i++) {
-    if (counts[array[i]] == 1) return array[i];
+    if (counts[array[i]] === 1) return array[i];
   }
 
   return null;
