@@ -3,7 +3,6 @@ function search_triplets(arr) {
   const triplets = [];
   for (i = 0; i < arr.length; i++) {
     if (i > 0 && arr[i] === arr[i - 1]) {
-      // skip same element to avoid duplicate triplets
       continue;
     }
     search_pair(arr, -arr[i], i + 1, triplets);

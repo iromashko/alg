@@ -1,25 +1,22 @@
-function triplet_with_smaller_sum(arr, target) {
-  arr.sort((a, b) => a - b);
+function triplet_with_smaller_sum(array, target) {
+  array.sort((a, b) => a - b);
   let count = 0;
-  for (i = 0; i < arr.length - 2; i++) {
-    count += search_pair(arr, target - arr[i], i);
+  for (i = 0; i < array.length - 2; i++) {
+    count += search_pair(array, target - array[i], i);
   }
   return count;
 }
 
-function search_pair(arr, target_sum, first) {
+function search_pair(array, target_sum, first) {
   let count = 0;
-  let left = first + 1,
-    right = arr.length - 1;
+  let left = first + 1;
+  let right = array.length - 1;
   while (left < right) {
-    if (arr[left] + arr[right] < target_sum) {
-      // found the triplet
-      // since arr[right] >= arr[left], therefore, we can replace arr[right] by any number between
-      // left and right to get a sum less than the target sum
+    if (array[left] + array[right] < target_sum) {
       count += right - left;
       left += 1;
     } else {
-      right -= 1; // we need a pair with a smaller sum
+      right -= 1;
     }
   }
   return count;

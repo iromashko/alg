@@ -1,6 +1,6 @@
 function pair_with_target_sum(arr, targetSum) {
-  let left = 0,
-    right = arr.length - 1;
+  let left = 0;
+  let right = arr.length - 1;
   while (left < right) {
     const currentSum = arr[left] + arr[right];
     if (currentSum === targetSum) {
@@ -8,9 +8,9 @@ function pair_with_target_sum(arr, targetSum) {
     }
 
     if (targetSum > currentSum) {
-      left += 1; // we need a pair with a bigger sum
+      left += 1;
     } else {
-      right -= 1; // we need a pair with a smaller sum
+      right -= 1;
     }
   }
   return [-1, -1];
