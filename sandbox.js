@@ -2,11 +2,11 @@ function findMissingNumber(array) {
   let i = 0;
   const n = array.length;
   while (i < n) {
-    j = array[i];
+    let j = array[i];
     if (array[i] < n && array[i] !== array[j]) {
       [array[i], array[j]] = [array[j], array[i]];
     } else {
-      i += 1;
+      i++;
     }
   }
   for (i = 0; i < n; i++) {
