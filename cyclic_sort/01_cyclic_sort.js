@@ -12,6 +12,4 @@ function cyclicSort(array) {
   return array;
 }
 
-console.log(cyclicSort([3, 1, 5, 4, 2]));
-console.log(cyclicSort([2, 6, 4, 3, 1, 5]));
-console.log(cyclicSort([1, 5, 6, 4, 3, 2]));
+module.exports = cyclicSort;

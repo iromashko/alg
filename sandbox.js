@@ -1,21 +1,17 @@
-function findMissingNumber(array) {
+function cyclicSort(array) {
   let i = 0;
-  const n = array.length;
-  while (i < n) {
-    let j = array[i];
-    if (array[i] < n && array[i] !== array[j]) {
+  while (i < array.length) {
+    const j = array[i] - 1;
+    if (array[i] !== array[j]) {
       [array[i], array[j]] = [array[j], array[i]];
     } else {
       i++;
     }
   }
-  for (i = 0; i < n; i++) {
-    if (array[i] !== i) {
-      return i;
-    }
-  }
-  return n;
+
+  return array;
 }
 
-console.log(findMissingNumber([4, 0, 3, 1]));
-console.log(findMissingNumber([8, 3, 5, 2, 4, 6, 0, 1]));
+console.log(cyclicSort([3, 1, 5, 4, 2]));
+console.log(cyclicSort([2, 6, 4, 3, 1, 5]));
+console.log(cyclicSort([1, 5, 6, 4, 3, 2]));
