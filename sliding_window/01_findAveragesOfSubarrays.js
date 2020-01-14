@@ -16,7 +16,4 @@ function findAveragesOfSubarrays(K, array) {
   return result;
 }
 
-// O(N)
-const result = findAveragesOfSubarrays(5, [1, 3, 2, 6, -1, 4, 1, 8, 2]);
-console.log(`Averages of subarrays of size K: 2.2,2.8,2.4,3.6,2.8`);
-console.log(`Averages of subarrays of size K: ${result}`);
+module.exports = findAveragesOfSubarrays;

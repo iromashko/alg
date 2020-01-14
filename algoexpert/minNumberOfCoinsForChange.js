@@ -13,3 +13,5 @@ function minNumberOfCoinsForChange(n, denoms) {
   }
   return numOfCoins[n] !== Infinity ? numOfCoins[n] : -1;
 }
+
+module.exports = minNumberOfCoinsForChange;
