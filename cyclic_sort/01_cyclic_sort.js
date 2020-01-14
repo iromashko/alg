@@ -1,16 +1,17 @@
-function cyclic_sort(nums) {
+function cyclicSort(array) {
   let i = 0;
-  while (i < nums.length) {
-    const j = nums[i] - 1;
-    if (nums[i] !== nums[j]) {
-      [nums[i], nums[j]] = [nums[j], nums[i]]; // swap
+  while (i < array.length) {
+    const j = array[i] - 1;
+    if (array[i] !== array[j]) {
+      [array[i], array[j]] = [array[j], array[i]];
     } else {
-      i += 1;
+      i++;
     }
   }
-  return nums;
+
+  return array;
 }
 
-console.log(cyclic_sort([3, 1, 5, 4, 2]));
-console.log(cyclic_sort([2, 6, 4, 3, 1, 5]));
-console.log(cyclic_sort([1, 5, 6, 4, 3, 2]));
+console.log(cyclicSort([3, 1, 5, 4, 2]));
+console.log(cyclicSort([2, 6, 4, 3, 1, 5]));
+console.log(cyclicSort([1, 5, 6, 4, 3, 2]));
