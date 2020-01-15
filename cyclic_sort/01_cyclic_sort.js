@@ -1,5 +1,5 @@
 function cyclicSort(array) {
-  let i = 0;
+  let i = 1;
   while (i < array.length) {
     const j = array[i] - 1;
     if (array[i] !== array[j]) {

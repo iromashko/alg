@@ -1,4 +1,5 @@
-function remove_duplicates(arr) {
+function removeDuplicates(arr) {
+  // index of the next non-duplicate element
   let nextNonDuplicate = 1;
 
   let i = 1;
@@ -10,8 +11,8 @@ function remove_duplicates(arr) {
     i += 1;
   }
 
+  console.log(`Result: ${arr}`);
   return nextNonDuplicate;
 }
 
-console.log(remove_duplicates([2, 3, 3, 3, 6, 9, 9]));
-console.log(remove_duplicates([2, 2, 2, 11]));
+module.exports = removeDuplicates;

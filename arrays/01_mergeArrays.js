@@ -18,7 +18,8 @@ function mergeArrays(array1, array2) {
     array2.splice(0, j);
     merged = merged.concat(array2);
   }
+
   return merged;
 }
 
-console.log(mergeArrays([4, 5, 6], [-2, -1, 0, 7]));
+module.exports = mergeArrays;

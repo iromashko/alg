@@ -1,16 +1,16 @@
-function find_subsets(nums) {
-  const subsets = [];
-  subsets.push([]);
-  for (i = 0; i < nums.length; i++) {
-    currentNumber = nums[i];
-    const n = subsets.length;
-    for (j = 0; j < n; j++) {
-      const set = subsets[j].slice(0);
+function findSubsets(array) {
+  const result = [];
+  result.push([]);
+  for (let i = 0; i < array.length; i++) {
+    currentNumber = array[i];
+    const n = result.length;
+    for (let j = 0; j < n; j++) {
+      const set = result[j].slice(0);
       set.push(currentNumber);
-      subsets.push(set);
+      result.push(set);
     }
   }
-  return subsets;
+  return result;
 }
 
-module.exports = find_subsets;
+module.exports = findSubsets;
