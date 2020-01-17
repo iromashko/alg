@@ -8,7 +8,6 @@ function cyclicSort(array) {
       i++;
     }
   }
-
   return array;
 }
 
