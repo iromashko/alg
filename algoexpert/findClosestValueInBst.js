@@ -2,7 +2,7 @@ function findClosestValueInBst(tree, target) {
   return findClosestValueInBstHelper(tree, target, Infinity);
 }
 function findClosestValueInBstHelper(tree, target, closest) {
-  let currentNode = this;
+  let currentNode = tree;
   while (currentNode !== null) {
     if (Math.abs(target - closest) > Math.abs(target - currentNode.value)) {
       closest = currentNode.value;
