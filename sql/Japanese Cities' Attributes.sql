@@ -1,3 +1,3 @@
-select *
-from city
-where countrycode = 'JPN'
+SELECT *
+FROM CITY
+WHERE COUNTRYCODE = 'JPN'
