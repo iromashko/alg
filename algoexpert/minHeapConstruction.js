@@ -50,9 +50,4 @@ class MinHeap {
     this.heap.push(value);
     this.siftUp(this.heap.length - 1, this.heap);
   }
-  swap(i, j, heap) {
-    const temp = heap[j];
-    heap[j] = heap[i];
-    heap[i] = temp;
-  }
 }
