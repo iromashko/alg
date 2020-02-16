@@ -21,7 +21,10 @@ class MinHeap {
         idxToSwap = childOneIdx;
       }
       if (heap[idxToSwap] < heap[currentIdx]) {
-        this.swap(currentIdx, idxToSwap, heap);
+        [heap[currentIdx], heap[idxToSwap]] = [
+          heap[idxToSwap],
+          heap[currentIdx]
+        ];
         currentIdx = idxToSwap;
         childOneIdx = currentIdx * 2 + 1;
       } else {
@@ -32,7 +35,7 @@ class MinHeap {
   siftUp(currentIdx, heap) {
     let parentIdx = Math.floor((currentIdx - 1) / 2);
     while (currentIdx > 0 && heap[currentIdx] < heap[parentIdx]) {
-      this.swap(currentIdx, parentIdx, heap);
+      [heap[currentIdx], heap[parentIdx]] = [heap[parentIdx], heap[currentIdx]];
       currentIdx = parentIdx;
       parentIdx = Math.floor((currentIdx - 1) / 2);
     }
@@ -41,7 +44,10 @@ class MinHeap {
     return this.heap[0];
   }
   remove() {
-    this.swap(0, this.heap.length - 1, this.heap);
+    [this.heap[0], this.heap[this.heap.length - 1]] = [
+      this.heap[this.heap.length - 1],
+      this.heap[0]
+    ];
     const valueToRemove = this.heap.pop();
     this.siftDown(0, this.heap.length - 1, this.heap);
     return valueToRemove;
