@@ -12,12 +12,12 @@ function removeKthNodeFromEnd(head, k) {
     second = second.next;
     counter++;
   }
-  if (second === null) {
+  if (!second) {
     head.value = head.next.value;
     head.next = head.next.next;
     return;
   }
-  while (second.next !== null) {
+  while (second.next) {
     second = second.next;
     first = first.next;
   }

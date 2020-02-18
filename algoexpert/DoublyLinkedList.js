@@ -12,7 +12,7 @@ class DoublyLinkedList {
     this.tail = null;
   }
   setHead(node) {
-    if (this.head === null) {
+    if (!this.head) {
       this.head = node;
       this.tail = node;
       return;
@@ -20,7 +20,7 @@ class DoublyLinkedList {
     this.insertBefore(this.head, node);
   }
   setTail(node) {
-    if (this.tail === null) {
+    if (!this.tail) {
       this.setHead(node);
       return;
     }
@@ -31,7 +31,7 @@ class DoublyLinkedList {
     this.remove(nodeToInsert);
     nodeToInsert.prev = node.prev;
     nodeToInsert.next = node;
-    if (node.prev === null) {
+    if (!node.prev) {
       this.head = nodeToInsert;
     } else {
       node.prev.next = nodeToInsert;
@@ -43,7 +43,7 @@ class DoublyLinkedList {
     this.remove(nodeToInsert);
     nodeToInsert.prev = node;
     nodeToInsert.next = node.next;
-    if (node.next === null) {
+    if (!node.next) {
       this.tail = nodeToInsert;
     } else {
       node.next.prev = nodeToInsert;
@@ -57,8 +57,8 @@ class DoublyLinkedList {
     }
     let node = this.head;
     let currentPosition = 1;
-    while (node !== null && currentPosition++ !== position) node = node.next;
-    if (node !== null) {
+    while (node && currentPosition++ !== position) node = node.next;
+    if (node) {
       this.insertBefore(node, nodeToInsert);
     } else {
       this.setTail(nodeToInsert);
@@ -66,12 +66,12 @@ class DoublyLinkedList {
   }
   containsNodeWithValue(value) {
     let node = this.head;
-    while (node !== null && node.value !== value) node = node.next;
+    while (node && node.value !== value) node = node.next;
     return node !== null;
   }
   removeNodesWithValue(value) {
     let node = this.head;
-    while (node !== null) {
+    while (node) {
       const nodeToRemove = node;
       node = node.next;
       if (nodeToRemove.value === value) this.remove(nodeToRemove);
@@ -83,8 +83,8 @@ class DoublyLinkedList {
     this.removeNodeBindings(node);
   }
   removeNodeBindings(node) {
-    if (node.prev !== null) node.prev.next = node.next;
-    if (node.next !== null) node.next.prev = node.prev;
+    if (node.prev) node.prev.next = node.next;
+    if (node.next) node.next.prev = node.prev;
     node.prev = null;
     node.next = null;
   }

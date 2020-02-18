@@ -8,14 +8,14 @@ class BST {
     let currentNode = this;
     while (true) {
       if (value < currentNode.value) {
-        if (currentNode.left === null) {
+        if (!currentNode.left) {
           currentNode.left = new BST(value);
           break;
         } else {
           currentNode = currentNode.left;
         }
       } else {
-        if (currentNode.right === null) {
+        if (!currentNode.right) {
           currentNode.right = new BST(value);
           break;
         } else {
@@ -27,7 +27,7 @@ class BST {
   }
   contains(value) {
     let currentNode = this;
-    while (currentNode !== null) {
+    while (currentNode) {
       if (value < currentNode.value) {
         currentNode = currentNode.left;
       } else if (value > currentNode.value) {
@@ -40,7 +40,7 @@ class BST {
   }
   remove(value, parentNode = null) {
     let currentNode = this;
-    while (currentNode !== null) {
+    while (currentNode) {
       if (value < currentNode.value) {
         parentNode = currentNode;
         currentNode = currentNode.left;
@@ -48,15 +48,15 @@ class BST {
         parentNode = currentNode;
         currentNode = currentNode.right;
       } else {
-        if (currentNode.left !== null && currentNode.right !== null) {
+        if (currentNode.left && currentNode.right) {
           currentNode.value = currentNode.right.getMinValue();
           currentNode.right.remove(currentNode.value, currentNode);
-        } else if (parentNode === null) {
-          if (currentNode.left !== null) {
+        } else if (!parentNode) {
+          if (currentNode.left) {
             currentNode.value = currentNode.left.value;
             currentNode.right = currentNode.left.right;
             currentNode.left = currentNode.left.left;
-          } else if (currentNode.right !== null) {
+          } else if (currentNode.right) {
             currentNode.value = currentNode.right.value;
             currentNode.left = currentNode.right.left;
             currentNode.right = currentNode.right.right;
@@ -64,11 +64,13 @@ class BST {
             currentNode.value = null;
           }
         } else if (parentNode.left === currentNode) {
-          parentNode.left =
-            currentNode.left !== null ? currentNode.left : currentNode.right;
+          parentNode.left = currentNode.left
+            ? currentNode.left
+            : currentNode.right;
         } else if (parentNode.right === currentNode) {
-          parentNode.right =
-            currentNode.left !== null ? currentNode.left : currentNode.right;
+          parentNode.right = currentNode.left
+            ? currentNode.left
+            : currentNode.right;
         }
         break;
       }
@@ -77,7 +79,7 @@ class BST {
   }
   getMinValue() {
     let currentNode = this;
-    while (currentNode.left !== null) {
+    while (currentNode.left) {
       currentNode = currentNode.left;
     }
     return currentNode.value;
