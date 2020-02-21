@@ -30,6 +30,17 @@ class MyArray {
     delete this.data[this.length - 1];
     this.length--;
   }
+  forEach(fn) {
+    for (let index in this) {
+      fn(this[index], index);
+    }
+  }
+  map(fn) {
+    for (let i = 0; i < this.length; i++) {
+      this.data[i] = fn(this.data[i]);
+    }
+    return this;
+  }
 }
 
 const myArray = new MyArray();
@@ -41,4 +52,13 @@ myArray.deleteAtIndex(0);
 myArray.push('are');
 myArray.push('nice');
 myArray.shiftItems(0);
+
 console.log(myArray);
+
+myArray.map(el => {
+  return `${el} in map`;
+});
+
+myArray.forEach(el => {
+  console.log(el);
+});
