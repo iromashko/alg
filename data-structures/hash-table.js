@@ -29,16 +29,16 @@ class HashTable {
 
   insert(key, value) {
     let b_Index = this.getIndex(key);
-    if (this.bucket[b_Index] == null) {
+    if (!this.bucket[b_Index]) {
       this.bucket[b_Index] = new HashEntry(key, value);
       console.log(String(key) + ', ' + String(value) + ' - inserted.');
     } else {
       let head = this.bucket[b_Index];
-      while (head != null) {
+      while (head) {
         if (head.key == key) {
           head.value = value;
           break;
-        } else if (head.next == null) {
+        } else if (!head.next) {
           head.next = new HashEntry(key, value);
           console.log(String(key) + ', ' + String(value) + ' - inserted.');
           break;
@@ -57,8 +57,8 @@ class HashTable {
   search(key) {
     let b_Index = this.getIndex(key);
     let head = this.bucket[b_Index];
-    if (head != null) {
-      while (head != null) {
+    if (head) {
+      while (head) {
         if (head.key == key) {
           return head.value;
         }
@@ -79,7 +79,7 @@ class HashTable {
       return this;
     }
     let prev = null;
-    while (head != null) {
+    while (head) {
       if (head.key == key) {
         prev.next = head.next;
         console.log('Key deleted');
@@ -101,17 +101,17 @@ class HashTable {
     }
     for (var i = 0; i < this.bucket.length; i++) {
       let head = this.bucket[i];
-      while (head != null) {
+      while (head) {
         let new_index = this.getIndex(head.key);
-        if (new_bucket[new_index] == null) {
+        if (!new_bucket[new_index]) {
           new_bucket[new_index] = new HashEntry(head.key, head.value);
         } else {
           let node = new_bucket[new_index];
-          while (node != null) {
+          while (node) {
             if (node.key == head.key) {
               node.value = head.value;
               node = null;
-            } else if (node.next == null) {
+            } else if (!node.next) {
               node.next = new HashEntry(head.key, head.value);
               node = null;
             } else {
