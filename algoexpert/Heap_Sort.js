@@ -31,3 +31,5 @@ function siftDown(currentIdx, endIdx, heap) {
     }
   }
 }
+
+module.exports = heapSort;
