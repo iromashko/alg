@@ -1,6 +1,6 @@
-function binarySearch(array, target) {
+module.exports = function binarySearch(array, target) {
   return binarySearchHelper(array, target, 0, array.length - 1);
-}
+};
 
 function binarySearchHelper(array, target, left, right) {
   while (left <= right) {

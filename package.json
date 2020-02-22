@@ -19,5 +19,8 @@
   "homepage": "https://github.com/iromashko/alg#readme",
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "cypress": "^4.0.2"
   }
 }
