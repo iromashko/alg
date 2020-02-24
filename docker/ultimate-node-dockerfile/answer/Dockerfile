@@ -1,11 +1,5 @@
-# this is an answer file for Assignment
-# move it up a directory for it to work
-
 FROM node:8-slim as base
 LABEL org.opencontainers.image.authors=bret@bretfisher.com
-LABEL org.opencontainers.image.title="Node.js Ultimate Dockerfile"
-LABEL org.opencontainers.image.licenses=MIT
-LABEL com.bretfisher.nodeversion=$NODE_VERSION
 ENV NODE_ENV=production
 EXPOSE 8080
 ENV PORT 8080
