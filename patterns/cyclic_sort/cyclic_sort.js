@@ -10,5 +10,3 @@ function cyclicSort(array) {
   }
   return array;
 }
-
-module.exports = cyclicSort;

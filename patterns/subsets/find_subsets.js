@@ -12,5 +12,3 @@ function findSubsets(array) {
   }
   return subsets;
 }
-
-module.exports = findSubsets;
