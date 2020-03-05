@@ -1,6 +1,5 @@
 function findSubsets(array) {
-  const subsets = [];
-  subsets.push([]);
+  let subsets = [[]];
   for (let i = 0; i < array.length; i++) {
     let currentNumber = array[i];
     const n = subsets.length;
@@ -10,5 +9,6 @@ function findSubsets(array) {
       subsets.push(set);
     }
   }
+
   return subsets;
 }
