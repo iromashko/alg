@@ -64,13 +64,9 @@ class BST {
             currentNode.value = null;
           }
         } else if (parentNode.left === currentNode) {
-          parentNode.left = currentNode.left
-            ? currentNode.left
-            : currentNode.right;
+          parentNode.left = currentNode.left || currentNode.right;
         } else if (parentNode.right === currentNode) {
-          parentNode.right = currentNode.left
-            ? currentNode.left
-            : currentNode.right;
+          parentNode.right = currentNode.left || currentNode.right;
         }
         break;
       }
