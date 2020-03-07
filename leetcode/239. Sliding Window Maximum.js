@@ -1,14 +1,15 @@
-function maxSlidingWindow(nums, k) {
-  const res = [];
-  const q = [];
-  for (let i = 0; i < nums.length; i++) {
-    while (q.length - 1 >= 0 && nums[i] > q[q.length - 1]) q.pop();
-    q.push(nums[i]);
+function maxSlidingWindow(array, k) {
+  const result = [];
+  const queue = [];
+  for (let i = 0; i < array.length; i++) {
+    while (queue.length - 1 >= 0 && array[i] > queue[queue.length - 1])
+      queue.pop();
+    queue.push(array[i]);
     const j = i + 1 - k;
     if (j >= 0) {
-      res.push(q[0]);
-      if (nums[j] === q[0]) q.shift();
+      result.push(queue[0]);
+      if (array[j] === queue[0]) queue.shift();
     }
   }
-  return res;
+  return result;
 }
