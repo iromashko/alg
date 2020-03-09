@@ -9,10 +9,7 @@ class HashTable {
   constructor() {
     this.slots = 10;
     this.size = 0;
-    this.bucket = [];
-    for (let i = 0; i < this.slots; i++) {
-      this.bucket[i] = null;
-    }
+    this.bucket = new Array(this.slots).fill(null);
     this.threshold = 0.6;
   }
   getSize() {
@@ -29,16 +26,16 @@ class HashTable {
     if (!this.bucket[bIndex]) {
       this.bucket[bIndex] = new HashEntry(key, value);
     } else {
-      let head = this.bucket[bIndex];
-      while (head) {
-        if (head.key === key) {
-          head.value = value;
+      let entry = this.bucket[bIndex];
+      while (entry) {
+        if (entry.key === key) {
+          entry.value = value;
           break;
-        } else if (!head.next) {
-          head.next = new HashEntry(key, value);
+        } else if (!entry.next) {
+          entry.next = new HashEntry(key, value);
           break;
         }
-        head = head.next;
+        entry = entry.next;
       }
     }
     this.size++;
