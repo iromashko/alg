@@ -1,4 +1,4 @@
-const clone = items =>
+const cloneArr = items =>
   items.map(item => (Array.isArray(item) ? clone(item) : item));
 
 const cloneObj = obj =>
