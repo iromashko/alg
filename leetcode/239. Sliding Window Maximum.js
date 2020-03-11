@@ -1,3 +1,18 @@
+// #maxSlidingWindow
+//   - input: Array, windowSize: Number
+//   - output: Array
+
+// result = []
+// queue = []
+// for each number in array
+//   - while number larger last queue
+//     - remove last queue
+//   - add number to queue
+// if windowSize >= 0
+//   - add first queue to result
+//   if windowStart = first queue
+//     - remove windowStart
+
 function maxSlidingWindow(array, k) {
   const result = [];
   const queue = [];
