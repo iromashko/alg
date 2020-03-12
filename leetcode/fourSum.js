@@ -1,25 +1,24 @@
-function fourSum(array, target) {
+function fourNumberSum(array, target) {
   const quadruplets = [];
   const seen = new Set();
-  const n = array.length;
   array.sort((a, b) => a - b);
-  for (let i = 0; i + 3 < n; ++i) {
-    for (let j = i + 3; j < n; ++j) {
+  for (let i = 0; i < array.length - 3; i++) {
+    for (let j = i + 3; j < array.length; j++) {
       let left = i + 1;
       let right = j - 1;
       while (left < right) {
         let sum = array[i] + array[left] + array[right] + array[j];
-        if (sum == target) {
+        if (sum === target) {
           let key = `${array[i]},${array[left]},${array[right]},${array[j]}`;
           if (!seen.has(key))
             quadruplets.push([array[i], array[left], array[right], array[j]]);
           seen.add(key);
-          ++left;
-          --right;
+          left++;
+          right--;
         } else if (sum < target) {
-          ++left;
+          left++;
         } else if (sum > target) {
-          --right;
+          right--;
         }
       }
     }
