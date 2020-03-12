@@ -1,5 +1,7 @@
-function fourSum(array, target, seen = new Set(), result = []) {
-  let n = array.length;
+function fourSum(array, target) {
+  const quadruplets = [];
+  const seen = new Set();
+  const n = array.length;
   array.sort((a, b) => a - b);
   for (let i = 0; i + 3 < n; ++i) {
     for (let j = i + 3; j < n; ++j) {
@@ -10,7 +12,7 @@ function fourSum(array, target, seen = new Set(), result = []) {
         if (sum == target) {
           let key = `${array[i]},${array[left]},${array[right]},${array[j]}`;
           if (!seen.has(key))
-            result.push([array[i], array[left], array[right], array[j]]);
+            quadruplets.push([array[i], array[left], array[right], array[j]]);
           seen.add(key);
           ++left;
           --right;
@@ -22,5 +24,5 @@ function fourSum(array, target, seen = new Set(), result = []) {
       }
     }
   }
-  return result;
+  return quadruplets;
 }
