@@ -1,19 +1,19 @@
-function BSTIterator(tree) {
-  var stack = [];
+function BSTIterator(root) {
+  let stack = [];
   return { hasNext, next };
 
   function hasNext() {
-    return tree || stack.length;
+    return root || stack.length;
   }
 
   function next() {
-    while (tree) {
-      stack.push(tree);
-      tree = tree.left;
+    while (root) {
+      stack.push(root);
+      root = root.left;
     }
-    tree = stack.pop();
-    var result = tree.val;
-    tree = tree.right;
+    root = stack.pop();
+    let result = root.val;
+    root = root.right;
     return result;
   }
 }
