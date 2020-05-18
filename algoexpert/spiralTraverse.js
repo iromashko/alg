@@ -1,23 +1,23 @@
 function spiralTraverse(array) {
-    const result = [];
-    spiralFill(array, 0, array.length - 1, 0, array[0].length - 1, result);
-    return result;
+  let result = [];
+  spiralFill(array, 0, array.length - 1, 0, array[0].length - 1, result);
+  return result;
 }
-function spiralFill(array, startRow, endRow, startCol, endCol, result) {
-    if (startRow > endRow || startCol > endCol) return;
-    for (let col = startCol; col <= endCol; col++) {
-        result.push(array[startRow][col]);
-    }
-    for (let row = startRow + 1; row <= endRow; row++) {
-        result.push(array[row][endCol]);
-    }
-    for (let col = endCol - 1; col >= startCol; col--) {
-        if (startRow === endRow) break;
-        result.push(array[endRow][col]);
-    }
-    for (let row = endRow - 1; row >= startRow + 1; row--) {
-        if (startCol === endCol) break;
-        result.push(array[row][startCol]);
-    }
-    spiralFill(array, startRow + 1, endRow - 1, startCol + 1, endCol - 1, result);
+function spiralFill(array, rowStart, rowEnd, colStart, colEnd, result) {
+  if (rowStart > rowEnd || colStart > colEnd) return;
+  for (let col = colStart; col <= colEnd; col++) {
+    result.push(array[rowStart][col]);
+  }
+  for (let row = rowStart + 1; row <= rowEnd; row++) {
+    result.push(array[row][colEnd]);
+  }
+  for (let col = colEnd - 1; col >= colStart; col--) {
+    if (rowStart === rowEnd) break;
+    result.push(array[rowEnd][col]);
+  }
+  for (let row = rowEnd - 1; row >= rowStart + 1; row--) {
+    if (colStart === colEnd) break;
+    result.push(array[row][colStart]);
+  }
+  spiralFill(array, rowStart + 1, rowEnd - 1, colStart + 1, colEnd - 1, result);
 }
