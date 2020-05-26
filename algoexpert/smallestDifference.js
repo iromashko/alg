@@ -1,20 +1,20 @@
 function smallestDifference(arrayOne, arrayTwo) {
   arrayOne.sort((a, b) => a - b);
   arrayTwo.sort((a, b) => a - b);
-  let idxOne = 0;
-  let idxTwo = 0;
+  let i = 0;
+  let j = 0;
   let smallest = Infinity;
   let current = Infinity;
   let smallestPair = [];
-  while (idxOne < arrayOne.length && idxTwo < arrayTwo.length) {
-    let firstNum = arrayOne[idxOne];
-    let secondNum = arrayTwo[idxTwo];
+  while (i < arrayOne.length && j < arrayTwo.length) {
+    let firstNum = arrayOne[i];
+    let secondNum = arrayTwo[j];
     if (firstNum < secondNum) {
       current = secondNum - firstNum;
-      idxOne++;
+      i++;
     } else if (secondNum < firstNum) {
       current = firstNum - secondNum;
-      idxTwo++;
+      j++;
     } else {
       return [firstNum, secondNum];
     }
