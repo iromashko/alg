@@ -1,14 +1,14 @@
 function mergeSortedArrays(arrays) {
   const sortedList = [];
   const smallestItems = [];
-  for (let arrayIdx = 0; arrayIdx < array.length; arrayIdx++) {
+  for (let arrayIdx = 0; arrayIdx < arrays.length; arrayIdx++) {
     smallestItems.push({
       arrayIdx,
       elementIdx: 0,
       num: arrays[arrayIdx][0],
     });
   }
-  const minHeap = new minHeap(smallestItems);
+  const minHeap = new MinHeap(smallestItems);
   while (!minHeap.isEmpty()) {
     const smallestItem = minHeap.remove();
     const { arrayIdx, elementIdx, num } = smallestItem;
@@ -22,6 +22,7 @@ function mergeSortedArrays(arrays) {
   }
   return sortedList;
 }
+
 class MinHeap {
   constructor(array) {
     this.heap = this.buildHeap(array);
@@ -41,18 +42,15 @@ class MinHeap {
     while (childOneIdx <= endIdx) {
       const childTwoIdx =
         currentIdx * 2 + 2 <= endIdx ? currentIdx * 2 + 2 : -1;
-      let idxToSwap;
-      if (childTwoIdx !== -1 && heap[childTwoIdx] < heap[childOneIdx]) {
-        idxToSwap = childTwoIdx;
+      let idxToSwp;
+      if (childTwoIdx !== -1 && heap[childTwoIdx].num < heap[childOneIdx].num) {
+        idxToSwp = childTwoIdx;
       } else {
-        idxToSwap = childOneIdx;
+        idxToSwp = childOneIdx;
       }
-      if (heap[idxToSwap] < heap[currentIdx]) {
-        [heap[currentIdx], heap[idxToSwap]] = [
-          heap[idxToSwap],
-          heap[currentIdx],
-        ];
-        currentIdx = idxToSwap;
+      if (heap[idxToSwp].num < heap[currentIdx].num) {
+        [heap[idxToSwp], heap[currentIdx]] = [heap[currentIdx], heap[idxToSwp]];
+        currentIdx = idxToSwp;
         childOneIdx = currentIdx * 2 + 1;
       } else {
         return;
@@ -61,26 +59,23 @@ class MinHeap {
   }
   siftUp(currentIdx, heap) {
     let parentIdx = Math.floor((currentIdx - 1) / 2);
-    while (currentIdx > 0 && heap[currentIdx] < heap[parentIdx]) {
-      [heap[currentIdx], heap[parentIdx]] = [heap[parentIdx], heap[currentIdx]];
+    while (currentIdx > 0 && heap[parentIdx].num > heap[currentIdx].num) {
+      [heap[parentIdx], heap[currentIdx]] = [heap[currentIdx], heap[parentIdx]];
       currentIdx = parentIdx;
       parentIdx = Math.floor((currentIdx - 1) / 2);
     }
   }
-  peek() {
-    return this.heap[0];
+  insert(value) {
+    this.heap.push(value);
+    this.siftUp(this.heap.length - 1, this.heap);
   }
   remove() {
-    [this.heap[0], this.heap[this.heap.length - 1]] = [
-      this.heap[this.heap.length - 1],
+    [this.heap[this.heap.length - 1], this.heap[0]] = [
       this.heap[0],
+      this.heap[this.heap.length - 1],
     ];
     const valueToRemove = this.heap.pop();
     this.siftDown(0, this.heap.length - 1, this.heap);
     return valueToRemove;
-  }
-  insert(value) {
-    this.heap.push(value);
-    this.siftUp(this.heap.length - 1, this.heap);
   }
 }
