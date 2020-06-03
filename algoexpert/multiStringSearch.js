@@ -7,7 +7,7 @@ function multiStringSearch(bigString, smallStrings) {
   for (let i = 0; i < bigString.length; i++) {
     findSmallStringsIn(bigString, i, trie, containedStrings);
   }
-  return smallStrings.map(string => string in containedStrings);
+  return smallStrings.map((string) => string in containedStrings);
 }
 function findSmallStringsIn(string, startIdx, trie, containedStrings) {
   let currentNode = trie.root;
@@ -27,9 +27,7 @@ class Trie {
   insert(string) {
     let current = this.root;
     for (let i = 0; i < string.length; i++) {
-      if (!(string[i] in current)) {
-        current[string[i]] = {};
-      }
+      if (!(string[i] in current)) current[string[i]] = {};
       current = current[string[i]];
     }
     current[this.endSymbol] = string;
