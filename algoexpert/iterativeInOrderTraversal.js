@@ -1,7 +1,7 @@
 function iterativeInOrderTraversal(tree, callback) {
   let previousNode = null;
   let currentNode = tree;
-  while (currentNode !== null) {
+  while (currentNode) {
     let nextNode;
     if (!previousNode || previousNode === currentNode.parent) {
       if (currentNode.left) {
