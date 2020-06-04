@@ -1,5 +1,3 @@
-//not working
-
 function boggleBoard(board, words) {
   const trie = new Trie();
   for (const word of words) {
@@ -35,7 +33,7 @@ function getNeighbors(i, j, board) {
     neighbors.push([i + 1, j + 1]);
   if (i < board.length - 1 && j > 0) neighbors.push([i + 1, j - 1]);
   if (i > 0) neighbors.push([i - 1, j]);
-  if (i < board.length - 1) neighbors.push([i + 1], j);
+  if (i < board.length - 1) neighbors.push([i + 1, j]);
   if (j > 0) neighbors.push([i, j - 1]);
   if (j < board[0].length - 1) neighbors.push([i, j + 1]);
   return neighbors;
