@@ -6,7 +6,7 @@ export function largestRange(array: number[]) {
     nums[num] = true;
   }
   for (const num of array) {
-    if (!nums[num]) false;
+    if (!nums[num]) continue;
     let currentLength = 1;
     let left = num - 1;
     let right = num + 1;
