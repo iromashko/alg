@@ -2,7 +2,7 @@ export function maxSumIncreasingSubsequence(
   array: number[]
 ): [number, number[]] {
   const sequences: number[] = new Array(array.length);
-  const sums: number[] = array.map((num) => num);
+  const sums: number[] = array.slice();
   let maxSumIdx = 0;
   for (let i = 0; i < array.length; i++) {
     const currentNum = array[i];
