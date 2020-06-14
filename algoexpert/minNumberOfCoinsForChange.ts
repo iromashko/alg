@@ -1,5 +1,5 @@
-function minNumberOfCoinsForChange(n, denoms) {
-  const numOfCoins = new Array(n + 1).fill(Infinity);
+export function minNumberOfCoinsForChange(n: number, denoms: number[]) {
+  const numOfCoins = Array(n + 1).fill(Infinity);
   numOfCoins[0] = 0;
   for (const denom of denoms) {
     for (let amount = 0; amount < numOfCoins.length; amount++) {
@@ -13,5 +13,3 @@ function minNumberOfCoinsForChange(n, denoms) {
   }
   return numOfCoins[n] !== Infinity ? numOfCoins[n] : -1;
 }
-
-module.exports = minNumberOfCoinsForChange;
