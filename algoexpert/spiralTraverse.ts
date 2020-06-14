@@ -1,9 +1,16 @@
-function spiralTraverse(array) {
-  let result = [];
+export function spiralTraverse(array: number[][]) {
+  const result: number[] = [];
   spiralFill(array, 0, array.length - 1, 0, array[0].length - 1, result);
   return result;
 }
-function spiralFill(array, rowStart, rowEnd, colStart, colEnd, result) {
+function spiralFill(
+  array: number[][],
+  rowStart: number,
+  rowEnd: number,
+  colStart: number,
+  colEnd: number,
+  result: number[]
+) {
   if (rowStart > rowEnd || colStart > colEnd) return;
   for (let col = colStart; col <= colEnd; col++) {
     result.push(array[rowStart][col]);
