@@ -28,9 +28,9 @@ class BST {
   contains(value) {
     let currentNode = this;
     while (currentNode) {
-      if (value < currentNode.value) {
+      if (currentNode.value > value) {
         currentNode = currentNode.left;
-      } else if (value > currentNode.value) {
+      } else if (currentNode.value < value) {
         currentNode = currentNode.right;
       } else {
         return true;
@@ -41,10 +41,10 @@ class BST {
   remove(value, parentNode = null) {
     let currentNode = this;
     while (currentNode) {
-      if (value < currentNode.value) {
+      if (currentNode.value > value) {
         parentNode = currentNode;
         currentNode = currentNode.left;
-      } else if (value > currentNode.value) {
+      } else if (currentNode.value < value) {
         parentNode = currentNode;
         currentNode = currentNode.right;
       } else {
@@ -61,7 +61,6 @@ class BST {
             currentNode.left = currentNode.right.left;
             currentNode.right = currentNode.right.right;
           } else {
-            currentNode.value = null;
           }
         } else if (parentNode.left === currentNode) {
           parentNode.left = currentNode.left || currentNode.right;
@@ -75,9 +74,7 @@ class BST {
   }
   getMinValue() {
     let currentNode = this;
-    while (currentNode.left) {
-      currentNode = currentNode.left;
-    }
+    while (currentNode.left) currentNode = currentNode.left;
     return currentNode.value;
   }
 }
