@@ -1,7 +1,7 @@
 function boggleBoard(board, words) {
   const trie = new Trie();
   for (const word of words) {
-    trie.add(word);
+    trie.insert(word);
   }
   const finalWords = {};
   const visited = board.map((row) => row.map((letter) => false));
@@ -43,12 +43,12 @@ class Trie {
     this.root = {};
     this.endSymbol = '*';
   }
-  add(word) {
+  insert(string) {
     let current = this.root;
-    for (const letter of word) {
+    for (const letter of string) {
       if (!(letter in current)) current[letter] = {};
       current = current[letter];
     }
-    current[this.endSymbol] = word;
+    current[this.endSymbol] = string;
   }
 }
