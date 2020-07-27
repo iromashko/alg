@@ -1,12 +1,10 @@
-function remove_duplicates(arr) {
-  let nextNonDuplicate = 1;
-  let i = 1;
-  while (i < arr.length) {
-    if (arr[nextNonDuplicate - 1] !== arr[i]) {
-      arr[nextNonDuplicate] = arr[i];
-      nextNonDuplicate++;
+function removeDuplicates(array) {
+  let pos = 1;
+  for (let i = 0; i < array.length; i++) {
+    if (array[pos] !== array[i]) {
+      array[pos] = array[i];
+      pos++;
     }
-    i++;
   }
-  return nextNonDuplicate;
+  return pos;
 }
