@@ -4,40 +4,23 @@ function quickselect(array, k) {
 }
 function quickselectHelper(array, startIdx, endIdx, position) {
   while (true) {
-    if (startIdx > endIdx) {
-      throw new Error();
+    if (startIdx > endIdx) throw new Error();
+    const pivot = startIdx;
+    let left = startIdx + 1;
+    let right = endIdx;
+    while (left <= right) {
+      if (array[left] > array[pivot] && array[right] < array[pivot])
+        [array[left], array[right]] = [array[right], array[left]];
+      if (array[left] <= array[pivot]) left++;
+      if (array[right] >= array[pivot]) right--;
     }
-    const pivotIdx = startIdx;
-    let leftIdx = startIdx + 1;
-    let rightIdx = endIdx;
-    while (leftIdx <= rightIdx) {
-      if (
-        array[leftIdx] > array[pivotIdx] &&
-        array[rightIdx] < array[pivotIdx]
-      ) {
-        swap(leftIdx, rightIdx, array);
-      }
-      if (array[leftIdx] <= array[pivotIdx]) {
-        leftIdx++;
-      }
-      if (array[rightIdx] >= array[pivotIdx]) {
-        rightIdx--;
-      }
-    }
-
-    swap(pivotIdx, rightIdx, array);
-
-    if (rightIdx === position) {
-      return array[rightIdx];
-    } else if (rightIdx < position) {
-      startIdx = rightIdx + 1;
-    } else {
-      endIdx = rightIdx - 1;
+    [array[right], array[pivot]] = [array[pivot], array[right]];
+    if (position === right) {
+      return array[right];
+    } else if (position > right) {
+      startIdx = right + 1;
+    } else if (position < right) {
+      endIdx = right - 1;
     }
   }
-}
-function swap(i, j, array) {
-  const temp = array[j];
-  array[j] = array[i];
-  array[i] = temp;
 }
